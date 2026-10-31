@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { profileData } from "@/data/profile";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,7 +19,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://nishantsurve.dev"),
   title: `${profileData.name} | ${profileData.role}`,
-  description: `${profileData.name} — ${profileData.headline} Specializing in Enterprise Automation, AI Agents, UiPath, Automation Anywhere 360, and Full-Stack Engineering.`,
+  description: `${profileData.name} — ${profileData.headline} Specializing in Enterprise Automation, AI Agents, UiPath, and Automation Anywhere 360.`,
   keywords: [
     "Nishant Surve",
     "Software Engineer",
@@ -26,7 +28,6 @@ export const metadata: Metadata = {
     "Automation Anywhere 360",
     "AI Agents",
     "Pune Software Engineer",
-    "Full-Stack Developer",
     "LeetCode Knight",
     "Next.js Portfolio",
   ],
@@ -78,7 +79,6 @@ const jsonLd = {
     "UiPath",
     "Artificial Intelligence Agents",
     "LLM Integration",
-    "Full-Stack Web Development",
     "Data Structures & Algorithms",
   ],
 };
@@ -107,6 +107,9 @@ export default function RootLayout({
         >
           {children}
         </ThemeProvider>
+        {/* Vercel Speed Insights & Web Analytics */}
+        <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );
