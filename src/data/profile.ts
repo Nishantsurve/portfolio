@@ -14,6 +14,6 @@ export const profileData: ProfileInfo = {
     leetcode: "https://leetcode.com/u/nishantsurve254/",
     email: "nishantsurve254@gmail.com",
   },
-  resumeUrl: "/resume.pdf",
+  resumeUrl: "https://drive.google.com/drive/folders/1HzPkMawth9UZXvPMPvqDahUwYaMRsAKE?usp=sharing",
   statusBadge: "Available for high-impact opportunities",
 };
