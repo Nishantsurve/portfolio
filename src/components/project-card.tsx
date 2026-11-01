@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ExternalLink, Check, Sparkles, Terminal } from "lucide-react";
+import { ExternalLink, Check, Sparkles, Terminal, HardDrive } from "lucide-react";
 import { ProjectItem } from "@/types";
 import { GithubIcon } from "./social-icons";
 
@@ -114,7 +114,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
           </div>
 
           {/* Links */}
-          <div className="flex items-center gap-3 pt-1">
+          <div className="flex flex-wrap items-center gap-2.5 pt-1">
             {project.githubUrl && (
               <a
                 href={project.githubUrl}
@@ -124,6 +124,17 @@ export function ProjectCard({ project }: ProjectCardProps) {
               >
                 <GithubIcon className="w-3.5 h-3.5" />
                 <span>Source Code</span>
+              </a>
+            )}
+            {project.driveUrl && (
+              <a
+                href={project.driveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg text-amber-700 dark:text-amber-300 bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/20 transition-colors"
+              >
+                <HardDrive className="w-3.5 h-3.5" />
+                <span>Google Drive</span>
               </a>
             )}
             {project.liveUrl && (
@@ -137,7 +148,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
                 <span>Live Demo</span>
               </a>
             )}
-            {!project.githubUrl && !project.liveUrl && (
+            {!project.githubUrl && !project.liveUrl && !project.driveUrl && (
               <span className="text-xs font-mono text-zinc-500 italic">
                 Proprietary / In Active Development
               </span>

@@ -37,7 +37,7 @@ export interface SkillCategory {
   description?: string;
 }
 
-export type ProjectCategory = "All" | "AI & Automation" | "Full-Stack" | "Tools";
+export type ProjectCategory = "All" | "AI & Automation" | "Full-Stack" | "Tools" | "Extension";
 
 export interface ProjectItem {
   id: string;
@@ -52,6 +52,7 @@ export interface ProjectItem {
   featured?: boolean;
   githubUrl?: string;
   liveUrl?: string;
+  driveUrl?: string;
 }
 
 export interface AchievementItem {

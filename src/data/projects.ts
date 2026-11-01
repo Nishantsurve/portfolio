@@ -109,6 +109,37 @@ export const projectsData: ProjectItem[] = [
       "Bounding-box coordinate mapping for spatial auditability and compliance",
       "Resilient handling of varied table layouts, scan noise, and multi-currency formats"
     ]
+  },
+  {
+    id: "snapconvert-pro-ai",
+    title: "SnapConvert Pro AI",
+    subtitle: "Browser Extension & Intelligent Document Utility Suite",
+    description: "All-in-one browser extension & client-side productivity suite featuring permission-based screenshot capture, multi-resolution PDF conversion, OCR text extraction, dual AI summarizers, client-side DOCX export, target-size JPEG compression, and local image enhancement.",
+    category: "Extension",
+    statusBadge: "Browser Extension",
+    featured: true,
+    stats: "Local PDF.js & OCR Engine | AI Summarization | Client-Side DOCX",
+    tags: [
+      "Chrome Extension",
+      "JavaScript",
+      "PDF.js",
+      "OCR Engine",
+      "Vision AI",
+      "DOCX Generator",
+      "Canvas DSP",
+      "Client-Side"
+    ],
+    features: [
+      "Browser Screen Capture: Permission-based browser screen capture API, active tab/webpage extension integration, and instant image preview before processing",
+      "Image & PDF Conversion: Bidirectional conversion (PNG/JPG/WEBP/PDF), quality sliders, page range selectors (e.g. 1-3), 1x/2x/3x PDF rendering, and A4-proportioned multi-page PDF splitting",
+      "Text Extraction & OCR: Local embedded text extraction via PDF.js, scanned PDF rendering with OCR fallback, and editable text preview with copy/download",
+      "Dual AI Summarization: Text and webpage content summarization with key points & caveats, plus multi-page PDF overview extraction with chunking support",
+      "Client-Side DOCX Export: Browser-native 'Download as Word (.docx)' generator preserving headings, line breaks, and formatting without requiring MS Word",
+      "Smart Image Compression: Target file size budgeting in KB (default 500 KB) adjusting quality & dimensions dynamically with reduction ratio metrics",
+      "Local Image Enhancement: Client-side canvas controls for brightness, contrast, and saturation with live preview and instant reset"
+    ],
+    githubUrl: "https://github.com/Nishantsurve/snapconvert-pro-ai",
+    driveUrl: "https://drive.google.com/drive/folders/1PkBp481VrMa__zYO99aBlBMUTCjMVR0B?usp=sharing"
   }
 ];
 

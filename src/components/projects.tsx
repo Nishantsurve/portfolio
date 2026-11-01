@@ -7,7 +7,7 @@ import { projectsData } from "@/data/projects";
 import { ProjectCategory } from "@/types";
 import { ProjectCard } from "./project-card";
 
-const categories: ProjectCategory[] = ["All", "AI & Automation", "Full-Stack", "Tools"];
+const categories: ProjectCategory[] = ["All", "AI & Automation", "Full-Stack", "Tools", "Extension"];
 
 export function Projects() {
   const [activeCategory, setActiveCategory] = useState<ProjectCategory>("All");
