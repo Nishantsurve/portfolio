@@ -95,6 +95,12 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        <script
+          src="https://quge5.com/88/tag.min.js"
+          data-zone="304325"
+          async
+          data-cfasync="false"
+        />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} min-h-screen flex flex-col antialiased`}
