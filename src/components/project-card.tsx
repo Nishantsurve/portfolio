@@ -19,7 +19,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
       transition={{ duration: 0.3 }}
       className={`rounded-2xl glass-panel glow-card flex flex-col justify-between overflow-hidden border ${
         project.featured
-          ? "border-cyan-500/40 md:col-span-2 bg-gradient-to-br from-cyan-500/[0.04] via-transparent to-emerald-500/[0.02]"
+          ? "border-zinc-400/40 md:col-span-2 bg-gradient-to-br from-zinc-500/[0.04] via-transparent to-zinc-400/[0.02]"
           : "border-zinc-200 dark:border-zinc-800"
       }`}
     >
@@ -37,7 +37,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
         {/* Status badges */}
         <div className="absolute top-4 left-4 flex flex-wrap gap-2 z-10">
           {project.statusBadge && (
-            <span className="px-2.5 py-1 text-xs font-mono font-semibold rounded-full bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border border-cyan-500/30 backdrop-blur-md">
+            <span className="px-2.5 py-1 text-xs font-mono font-semibold rounded-full bg-zinc-400/10 text-zinc-600 dark:text-zinc-300 border border-zinc-400/30 backdrop-blur-md">
               {project.statusBadge}
             </span>
           )}
@@ -51,7 +51,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
 
         {/* Placeholder UI Graphic representation */}
         <div className="relative z-10 flex flex-col items-center justify-center text-center p-4">
-          <div className="w-14 h-14 rounded-2xl bg-cyan-500/10 dark:bg-cyan-500/20 border border-cyan-500/30 flex items-center justify-center text-cyan-500 dark:text-cyan-400 shadow-lg mb-2">
+          <div className="w-14 h-14 rounded-2xl bg-zinc-400/10 dark:bg-zinc-400/15 border border-zinc-400/30 flex items-center justify-center text-zinc-500 dark:text-zinc-400 shadow-lg mb-2">
             <Terminal className="w-7 h-7" />
           </div>
           <span className="text-xs font-mono text-zinc-500 tracking-wider uppercase">
@@ -71,7 +71,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
               <h3 className="text-xl sm:text-2xl font-bold text-zinc-900 dark:text-zinc-100">
                 {project.title}
               </h3>
-              <div className="text-xs font-semibold text-cyan-600 dark:text-cyan-400 mt-0.5">
+              <div className="text-xs font-semibold text-zinc-500 dark:text-zinc-400 mt-0.5">
                 {project.subtitle}
               </div>
             </div>
@@ -79,7 +79,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
 
           {/* Stats if available */}
           {project.stats && (
-            <div className="mt-2.5 p-2 rounded-lg bg-cyan-500/5 dark:bg-cyan-500/10 border border-cyan-500/20 text-xs font-mono text-cyan-700 dark:text-cyan-300">
+            <div className="mt-2.5 p-2 rounded-lg bg-zinc-400/5 dark:bg-zinc-400/8 border border-zinc-400/20 text-xs font-mono text-zinc-600 dark:text-zinc-300">
               📊 {project.stats}
             </div>
           )}
@@ -92,7 +92,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
           <div className="mt-4 space-y-2">
             {project.features.map((feat, idx) => (
               <div key={idx} className="flex items-start gap-2 text-xs text-zinc-600 dark:text-zinc-400">
-                <Check className="w-3.5 h-3.5 text-cyan-500 shrink-0 mt-0.5" />
+                <Check className="w-3.5 h-3.5 text-zinc-400 dark:text-zinc-500 shrink-0 mt-0.5" />
                 <span className="leading-normal">{feat}</span>
               </div>
             ))}
@@ -142,7 +142,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
                 href={project.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg text-cyan-700 dark:text-cyan-300 bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/20 transition-colors"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg text-zinc-600 dark:text-zinc-300 bg-zinc-500/10 hover:bg-zinc-500/20 border border-zinc-500/20 transition-colors"
               >
                 <ExternalLink className="w-3.5 h-3.5" />
                 <span>Live Demo</span>

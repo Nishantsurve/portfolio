@@ -11,7 +11,7 @@ import { Footer } from "@/components/footer";
 
 export default function Home() {
   return (
-    <div className="relative flex min-h-screen flex-col bg-background text-foreground antialiased selection:bg-cyan-500/20 selection:text-cyan-400">
+    <div className="relative flex min-h-screen flex-col bg-background text-foreground antialiased selection:bg-zinc-500/20 selection:text-zinc-200">
       <Navbar />
       <main className="flex-1">
         <Hero />

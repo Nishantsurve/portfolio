@@ -19,7 +19,7 @@ export function About() {
     <section id="about" className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       {/* Section Header */}
       <div className="text-center max-w-3xl mx-auto mb-16">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-cyan-500/20 bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 text-xs font-mono mb-3">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-zinc-400/20 bg-zinc-400/8 text-zinc-500 dark:text-zinc-400 text-xs font-mono mb-3">
           <Sparkles className="w-3.5 h-3.5" />
           <span>ABOUT ME</span>
         </div>
@@ -42,7 +42,7 @@ export function About() {
           className="md:col-span-2 lg:col-span-2 p-6 sm:p-8 rounded-2xl glass-panel relative overflow-hidden flex flex-col justify-between group"
         >
           <div className="space-y-4">
-            <div className="flex items-center gap-2 text-cyan-600 dark:text-cyan-400 font-mono text-xs uppercase tracking-wider font-semibold">
+            <div className="flex items-center gap-2 text-zinc-500 dark:text-zinc-400 font-mono text-xs uppercase tracking-wider font-semibold">
               <Workflow className="w-4 h-4" />
               <span>Engineering Journey</span>
             </div>
@@ -114,7 +114,7 @@ export function About() {
         >
           <div>
             <div className="flex items-center justify-between">
-              <span className="p-2.5 rounded-xl bg-cyan-500/10 text-cyan-500">
+              <span className="p-2.5 rounded-xl bg-zinc-200/50 dark:bg-zinc-800/50 text-zinc-500 dark:text-zinc-400">
                 <MapPin className="w-5 h-5" />
               </span>
               <span className="text-xs font-mono text-zinc-500">IST (UTC+5:30)</span>
@@ -135,10 +135,10 @@ export function About() {
         <motion.div
           whileHover={{ y: -3 }}
           transition={{ duration: 0.2 }}
-          className="md:col-span-2 lg:col-span-2 p-6 rounded-2xl glass-panel flex flex-col justify-between border-cyan-500/20"
+          className="md:col-span-2 lg:col-span-2 p-6 rounded-2xl glass-panel flex flex-col justify-between border-zinc-500/20"
         >
           <div>
-            <div className="flex items-center gap-2 text-cyan-600 dark:text-cyan-400 text-xs font-mono font-semibold">
+            <div className="flex items-center gap-2 text-zinc-500 dark:text-zinc-400 text-xs font-mono font-semibold">
               <BrainCircuit className="w-4 h-4" />
               <span>CURRENT OBSESSION</span>
             </div>
@@ -150,7 +150,7 @@ export function About() {
             </p>
           </div>
           <div className="mt-4 flex flex-wrap gap-2 text-xs font-mono text-zinc-600 dark:text-zinc-400">
-            <span className="px-2.5 py-1 rounded-md bg-cyan-500/10 text-cyan-600 dark:text-cyan-400">
+            <span className="px-2.5 py-1 rounded-md bg-zinc-500/10 text-zinc-600 dark:text-zinc-400">
               Gemini API
             </span>
             <span className="px-2.5 py-1 rounded-md bg-zinc-200/50 dark:bg-zinc-800/80">

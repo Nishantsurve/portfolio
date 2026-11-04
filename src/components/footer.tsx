@@ -17,12 +17,12 @@ export function Footer() {
   };
 
   return (
-    <footer className="border-t border-zinc-200 dark:border-zinc-800/80 bg-zinc-50/50 dark:bg-[#040609]/80 py-12 transition-colors">
+    <footer className="border-t border-zinc-200 dark:border-zinc-900 bg-zinc-50/50 dark:bg-[#050505]/90 py-12 transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           {/* Brand */}
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-cyan-500/10 dark:bg-cyan-400/10 border border-cyan-500/20 flex items-center justify-center text-cyan-500 dark:text-cyan-400">
+            <div className="w-8 h-8 rounded-lg bg-zinc-800/10 dark:bg-zinc-100/10 border border-zinc-400/20 flex items-center justify-center text-zinc-500 dark:text-zinc-400">
               <Terminal className="w-4 h-4" />
             </div>
             <div>
@@ -49,7 +49,7 @@ export function Footer() {
             </span>
             <button
               onClick={scrollToTop}
-              className="p-2.5 rounded-xl border border-zinc-200 dark:border-zinc-800 text-zinc-500 hover:text-cyan-400 hover:bg-zinc-100 dark:hover:bg-zinc-800/60 transition-all cursor-pointer"
+              className="p-2.5 rounded-xl border border-zinc-200 dark:border-zinc-800 text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-800/60 transition-all cursor-pointer"
               aria-label="Scroll back to top"
               title="Return to top"
             >

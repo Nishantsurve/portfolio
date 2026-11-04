@@ -16,7 +16,7 @@ export function Achievements() {
     <section id="achievements" className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       {/* Section Header */}
       <div className="text-center max-w-3xl mx-auto mb-16">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-cyan-500/20 bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 text-xs font-mono mb-3">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-zinc-400/20 bg-zinc-400/8 text-zinc-500 dark:text-zinc-400 text-xs font-mono mb-3">
           <Trophy className="w-3.5 h-3.5" />
           <span>PROVEN TRACK RECORD</span>
         </div>
@@ -53,7 +53,7 @@ export function Achievements() {
                     className={`p-3 rounded-xl ${
                       isHighlight
                         ? "bg-amber-500/15 text-amber-500"
-                        : "bg-cyan-500/10 text-cyan-500"
+                        : "bg-zinc-400/10 text-zinc-400"
                     }`}
                   >
                     <Icon className="w-6 h-6" />

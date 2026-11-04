@@ -56,7 +56,7 @@ export function Navbar() {
     <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
       {/* Top scroll progress indicator bar */}
       <div
-        className="h-[2px] bg-gradient-to-r from-cyan-400 to-emerald-400 fixed top-0 left-0 transition-all duration-75 z-50"
+        className="h-[2px] bg-gradient-to-r from-zinc-400 to-zinc-600 dark:from-zinc-300 dark:to-zinc-500 fixed top-0 left-0 transition-all duration-75 z-50"
         style={{ width: `${scrollProgress}%` }}
         role="progressbar"
         aria-valuenow={Math.round(scrollProgress)}
@@ -76,11 +76,11 @@ export function Navbar() {
               href="#hero"
               className="flex items-center gap-2.5 text-sm sm:text-base font-bold tracking-tight text-zinc-900 dark:text-zinc-100 group"
             >
-              <div className="w-8 h-8 rounded-lg bg-cyan-500/10 dark:bg-cyan-400/10 border border-cyan-500/20 flex items-center justify-center text-cyan-500 dark:text-cyan-400 group-hover:scale-105 transition-transform">
+              <div className="w-8 h-8 rounded-lg bg-zinc-800/10 dark:bg-zinc-100/10 border border-zinc-400/20 flex items-center justify-center text-zinc-600 dark:text-zinc-300 group-hover:scale-105 transition-transform">
                 <Terminal className="w-4 h-4" />
               </div>
               <span className="font-mono">
-                nishant<span className="text-cyan-400">.surve</span>
+                nishant<span className="text-zinc-400 dark:text-zinc-500">.surve</span>
               </span>
             </a>
             <div className="hidden lg:block">
@@ -99,7 +99,7 @@ export function Navbar() {
                   href={link.href}
                   className={`px-3 py-1.5 text-xs lg:text-sm font-medium rounded-lg transition-colors ${
                     isActive
-                      ? "text-cyan-500 dark:text-cyan-400 bg-cyan-500/10 dark:bg-cyan-400/10"
+                      ? "text-zinc-800 dark:text-zinc-100 bg-zinc-200/80 dark:bg-zinc-700/60"
                       : "text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-800/50"
                   }`}
                 >
@@ -115,9 +115,9 @@ export function Navbar() {
               href={profileData.resumeUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-3.5 py-1.5 text-xs lg:text-sm font-medium rounded-xl text-zinc-800 dark:text-zinc-200 bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-800/80 dark:hover:bg-zinc-700/80 border border-zinc-200 dark:border-zinc-700/60 transition-all focus:outline-none focus:ring-2 focus:ring-cyan-400"
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 text-xs lg:text-sm font-medium rounded-xl text-zinc-800 dark:text-zinc-200 bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-800/80 dark:hover:bg-zinc-700/80 border border-zinc-200 dark:border-zinc-700/60 transition-all focus:outline-none focus:ring-2 focus:ring-zinc-400"
             >
-              <FileDown className="w-3.5 h-3.5 text-cyan-400" />
+              <FileDown className="w-3.5 h-3.5 text-zinc-400 dark:text-zinc-500" />
               <span>Resume</span>
             </a>
             <ThemeToggle />
@@ -147,7 +147,7 @@ export function Navbar() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="px-3 py-2 text-sm font-medium rounded-lg text-zinc-700 dark:text-zinc-300 hover:text-cyan-400 hover:bg-zinc-800/50"
+                className="px-3 py-2 text-sm font-medium rounded-lg text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-800/50"
               >
                 {link.label}
               </a>
@@ -160,7 +160,7 @@ export function Navbar() {
                 onClick={() => setMobileMenuOpen(false)}
                 className="w-full inline-flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium rounded-xl text-zinc-800 dark:text-zinc-200 bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700"
               >
-                <FileDown className="w-4 h-4 text-cyan-400" />
+                <FileDown className="w-4 h-4 text-zinc-400 dark:text-zinc-500" />
                 <span>Download Resume</span>
               </a>
             </div>

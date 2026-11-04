@@ -32,7 +32,7 @@ export function Skills() {
     <section id="skills" className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       {/* Section Header */}
       <div className="text-center max-w-3xl mx-auto mb-16">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-cyan-500/20 bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 text-xs font-mono mb-3">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-zinc-400/20 bg-zinc-400/8 text-zinc-500 dark:text-zinc-400 text-xs font-mono mb-3">
           <Sparkles className="w-3.5 h-3.5" />
           <span>TECHNICAL ARSENAL</span>
         </div>
@@ -59,7 +59,7 @@ export function Skills() {
               transition={{ duration: 0.4, delay: index * 0.05 }}
               className={`p-6 rounded-2xl glass-panel glow-card flex flex-col justify-between ${
                 isHighlighted
-                  ? "border-cyan-500/30 bg-cyan-500/[0.02] dark:bg-cyan-500/[0.04]"
+                  ? "border-zinc-400/30 bg-zinc-400/[0.02] dark:bg-zinc-400/[0.03]"
                   : ""
               }`}
             >
@@ -69,7 +69,7 @@ export function Skills() {
                   <div
                     className={`p-2.5 rounded-xl ${
                       isHighlighted
-                        ? "bg-cyan-500/15 text-cyan-500"
+                        ? "bg-zinc-400/15 text-zinc-400"
                         : "bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300"
                     }`}
                   >
@@ -95,7 +95,7 @@ export function Skills() {
                       key={skill}
                       className={`px-2.5 py-1 text-xs font-mono rounded-lg transition-all ${
                         isHighlighted
-                          ? "bg-cyan-500/10 text-cyan-700 dark:text-cyan-300 border border-cyan-500/20 hover:bg-cyan-500/20"
+                          ? "bg-zinc-400/10 text-zinc-600 dark:text-zinc-300 border border-zinc-400/20 hover:bg-zinc-400/20"
                           : "bg-zinc-100 dark:bg-zinc-800/80 text-zinc-700 dark:text-zinc-300 border border-zinc-200 dark:border-zinc-700/60 hover:border-zinc-400 dark:hover:border-zinc-500"
                       }`}
                     >

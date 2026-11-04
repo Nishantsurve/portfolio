@@ -21,7 +21,7 @@ export function Projects() {
     <section id="projects" className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       {/* Section Header */}
       <div className="text-center max-w-3xl mx-auto mb-12">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-cyan-500/20 bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 text-xs font-mono mb-3">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-zinc-400/20 bg-zinc-400/8 text-zinc-500 dark:text-zinc-400 text-xs font-mono mb-3">
           <FolderGit2 className="w-3.5 h-3.5" />
           <span>PORTFOLIO SHOWCASE</span>
         </div>
@@ -42,7 +42,7 @@ export function Projects() {
                 onClick={() => setActiveCategory(cat)}
                 className={`relative px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all ${
                   isActive
-                    ? "text-zinc-950 dark:text-white bg-cyan-500 shadow-md shadow-cyan-500/20"
+                    ? "text-zinc-50 dark:text-white bg-zinc-700 dark:bg-zinc-200 dark:text-zinc-900 shadow-md shadow-zinc-700/20"
                     : "text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200 bg-zinc-100 dark:bg-zinc-800/80 border border-zinc-200 dark:border-zinc-700/60"
                 }`}
               >

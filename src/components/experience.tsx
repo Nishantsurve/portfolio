@@ -9,7 +9,7 @@ export function Experience() {
     <section id="experience" className="py-24 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
       {/* Section Header */}
       <div className="text-center max-w-3xl mx-auto mb-16">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-cyan-500/20 bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 text-xs font-mono mb-3">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-zinc-400/20 bg-zinc-400/8 text-zinc-500 dark:text-zinc-400 text-xs font-mono mb-3">
           <Briefcase className="w-3.5 h-3.5" />
           <span>CAREER TIMELINE</span>
         </div>
@@ -33,7 +33,7 @@ export function Experience() {
             className="relative pl-6 sm:pl-10"
           >
             {/* Timeline node marker */}
-            <div className="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-cyan-500 border-4 border-white dark:border-[#06080d] shadow-sm" />
+            <div className="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-zinc-400 border-4 border-white dark:border-[#080808] shadow-sm" />
 
             {/* Experience Card */}
             <div className="p-6 sm:p-8 rounded-2xl glass-panel glow-card space-y-4">
@@ -43,17 +43,17 @@ export function Experience() {
                   <h3 className="text-xl sm:text-2xl font-bold text-zinc-900 dark:text-zinc-100">
                     {exp.role}
                   </h3>
-                  <div className="text-base font-semibold text-cyan-600 dark:text-cyan-400">
+                  <div className="text-base font-semibold text-zinc-500 dark:text-zinc-400">
                     {exp.company}
                   </div>
                 </div>
                 <div className="flex flex-wrap items-center gap-3 text-xs font-mono text-zinc-500">
                   <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-zinc-100 dark:bg-zinc-800">
-                    <Calendar className="w-3.5 h-3.5 text-cyan-400" />
+                    <Calendar className="w-3.5 h-3.5 text-zinc-400 dark:text-zinc-500" />
                     <span>{exp.period}</span>
                   </span>
                   <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-zinc-100 dark:bg-zinc-800">
-                    <MapPin className="w-3.5 h-3.5 text-cyan-400" />
+                    <MapPin className="w-3.5 h-3.5 text-zinc-400 dark:text-zinc-500" />
                     <span>{exp.location}</span>
                   </span>
                 </div>
@@ -71,7 +71,7 @@ export function Experience() {
                 </div>
                 {exp.keyAchievements.map((item, idx) => (
                   <div key={idx} className="flex items-start gap-2.5 text-sm text-zinc-600 dark:text-zinc-400">
-                    <CheckCircle2 className="w-4 h-4 text-cyan-500 shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-4 h-4 text-zinc-400 dark:text-zinc-500 shrink-0 mt-0.5" />
                     <span className="leading-relaxed">{item}</span>
                   </div>
                 ))}
@@ -86,7 +86,7 @@ export function Experience() {
                   {exp.technologies.map((tech) => (
                     <span
                       key={tech}
-                      className="px-2.5 py-1 text-xs font-mono rounded-lg bg-cyan-500/10 text-cyan-700 dark:text-cyan-300 border border-cyan-500/20"
+                      className="px-2.5 py-1 text-xs font-mono rounded-lg bg-zinc-500/8 text-zinc-600 dark:text-zinc-300 border border-zinc-400/20"
                     >
                       {tech}
                     </span>

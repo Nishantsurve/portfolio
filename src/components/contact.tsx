@@ -56,7 +56,7 @@ export function Contact() {
     <section id="contact" className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       {/* Section Header */}
       <div className="text-center max-w-3xl mx-auto mb-16">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-cyan-500/20 bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 text-xs font-mono mb-3">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-zinc-400/20 bg-zinc-400/8 text-zinc-500 dark:text-zinc-400 text-xs font-mono mb-3">
           <Mail className="w-3.5 h-3.5" />
           <span>INITIATE CONTACT</span>
         </div>
@@ -86,12 +86,12 @@ export function Contact() {
               </span>
               <div className="flex items-center justify-between p-3 rounded-xl bg-zinc-100 dark:bg-zinc-800/80 border border-zinc-200 dark:border-zinc-700/60">
                 <div className="flex items-center gap-2 text-xs sm:text-sm font-mono text-zinc-800 dark:text-zinc-200 truncate">
-                  <Mail className="w-4 h-4 text-cyan-500 shrink-0" />
+                  <Mail className="w-4 h-4 text-zinc-400 dark:text-zinc-500 shrink-0" />
                   <span className="truncate">{profileData.socials.email}</span>
                 </div>
                 <button
                   onClick={handleCopyEmail}
-                  className="p-1.5 rounded-lg text-zinc-500 hover:text-cyan-400 hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors"
+                  className="p-1.5 rounded-lg text-zinc-500 hover:text-zinc-700 dark:hover:text-zinc-200 hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors"
                   aria-label="Copy email address"
                   title="Copy email"
                 >
@@ -102,7 +102,7 @@ export function Contact() {
 
             {/* Location snapshot */}
             <div className="flex items-center gap-3 p-3 rounded-xl bg-zinc-100 dark:bg-zinc-800/80 border border-zinc-200 dark:border-zinc-700/60 text-xs sm:text-sm font-mono text-zinc-700 dark:text-zinc-300">
-              <MapPin className="w-4 h-4 text-cyan-500 shrink-0" />
+              <MapPin className="w-4 h-4 text-zinc-400 dark:text-zinc-500 shrink-0" />
               <span>{profileData.location} &bull; Remote Available</span>
             </div>
 
@@ -181,7 +181,7 @@ export function Contact() {
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     placeholder="Jane Doe"
-                    className="w-full px-4 py-2.5 rounded-xl bg-zinc-100 dark:bg-zinc-900/80 border border-zinc-300 dark:border-zinc-800 text-zinc-900 dark:text-zinc-100 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 text-sm transition-all"
+                    className="w-full px-4 py-2.5 rounded-xl bg-zinc-100 dark:bg-zinc-900/80 border border-zinc-300 dark:border-zinc-800 text-zinc-900 dark:text-zinc-100 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-zinc-400 text-sm transition-all"
                   />
                 </div>
 
@@ -196,7 +196,7 @@ export function Contact() {
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     placeholder="jane@company.com"
-                    className="w-full px-4 py-2.5 rounded-xl bg-zinc-100 dark:bg-zinc-900/80 border border-zinc-300 dark:border-zinc-800 text-zinc-900 dark:text-zinc-100 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 text-sm transition-all"
+                    className="w-full px-4 py-2.5 rounded-xl bg-zinc-100 dark:bg-zinc-900/80 border border-zinc-300 dark:border-zinc-800 text-zinc-900 dark:text-zinc-100 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-zinc-400 text-sm transition-all"
                   />
                 </div>
 
@@ -211,14 +211,14 @@ export function Contact() {
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     placeholder="Hi Nishant, I would love to connect regarding..."
-                    className="w-full px-4 py-2.5 rounded-xl bg-zinc-100 dark:bg-zinc-900/80 border border-zinc-300 dark:border-zinc-800 text-zinc-900 dark:text-zinc-100 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 text-sm transition-all resize-none"
+                    className="w-full px-4 py-2.5 rounded-xl bg-zinc-100 dark:bg-zinc-900/80 border border-zinc-300 dark:border-zinc-800 text-zinc-900 dark:text-zinc-100 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-zinc-400 text-sm transition-all resize-none"
                   />
                 </div>
 
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-zinc-950 font-semibold text-sm transition-all shadow-md shadow-cyan-500/20 hover:scale-[1.01] active:scale-[0.99] disabled:opacity-70 cursor-pointer"
+                  className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-zinc-800 hover:bg-zinc-700 dark:bg-zinc-100 dark:hover:bg-white text-white dark:text-zinc-900 font-semibold text-sm transition-all shadow-md hover:scale-[1.01] active:scale-[0.99] disabled:opacity-70 cursor-pointer"
                 >
                   {loading ? (
                     <>

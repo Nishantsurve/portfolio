@@ -69,7 +69,7 @@ export function HeroCanvas() {
             ctx.beginPath();
             ctx.moveTo(nodes[i].x, nodes[i].y);
             ctx.lineTo(nodes[j].x, nodes[j].y);
-            ctx.strokeStyle = `rgba(0, 242, 254, ${alpha})`;
+            ctx.strokeStyle = `rgba(161, 161, 170, ${alpha})`;
             ctx.lineWidth = 1;
             ctx.stroke();
 
@@ -80,7 +80,7 @@ export function HeroCanvas() {
               const py = nodes[i].y + (nodes[j].y - nodes[i].y) * pulsePos;
               ctx.beginPath();
               ctx.arc(px, py, 1.5, 0, Math.PI * 2);
-              ctx.fillStyle = "rgba(0, 242, 254, 0.8)";
+              ctx.fillStyle = "rgba(161, 161, 170, 0.8)";
               ctx.fill();
             }
           }
@@ -101,13 +101,13 @@ export function HeroCanvas() {
         // Core dot
         ctx.beginPath();
         ctx.arc(node.x, node.y, radius, 0, Math.PI * 2);
-        ctx.fillStyle = "#00f2fe";
+        ctx.fillStyle = "#a1a1aa";
         ctx.fill();
 
         // Node aura
         ctx.beginPath();
         ctx.arc(node.x, node.y, radius * 2.8, 0, Math.PI * 2);
-        ctx.fillStyle = "rgba(0, 242, 254, 0.08)";
+        ctx.fillStyle = "rgba(161, 161, 170, 0.08)";
         ctx.fill();
 
         // Subtle tech labels for key nodes

@@ -30,7 +30,7 @@ export function ViewsCounter() {
       className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-zinc-100 dark:bg-zinc-800/90 border border-zinc-200 dark:border-zinc-700/60 text-xs font-mono text-zinc-600 dark:text-zinc-400 shadow-xs"
       title="Total Portfolio Impressions / Visitors"
     >
-      <Eye className="w-3.5 h-3.5 text-cyan-400 animate-pulse" />
+      <Eye className="w-3.5 h-3.5 text-zinc-400 dark:text-zinc-500 animate-pulse" />
       <span>{views !== null ? views.toLocaleString() : "..."} views</span>
     </div>
   );

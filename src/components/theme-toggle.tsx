@@ -21,7 +21,7 @@ export function ThemeToggle() {
   return (
     <button
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-      className="relative p-2 rounded-xl text-zinc-400 hover:text-cyan-400 hover:bg-zinc-800/60 dark:hover:bg-zinc-800/80 border border-zinc-200 dark:border-zinc-800 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+      className="relative p-2 rounded-xl text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-800/80 border border-zinc-200 dark:border-zinc-800 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-zinc-400"
       aria-label="Toggle visual theme"
       title={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
     >
