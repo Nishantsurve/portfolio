@@ -1,188 +1,172 @@
 import { NextResponse } from "next/server";
-import fs from "fs";
-import path from "path";
-
-// Local backup storage when developing locally or if external webhook is unreachable
-const localViewsFilePath = path.join(process.cwd(), ".views-count.json");
 
 interface ViewLocation {
   city?: string;
   region?: string;
   country?: string;
   countryCode?: string;
-  flag?: string;
 }
 
-interface LocalStats {
-  views: number;
-  locations: Record<string, number>;
-  cities: Record<string, number>;
-  recent: Array<{ city?: string; country?: string; flag?: string }>;
-}
+// In-memory runtime cache for serverless invocation
+let memoryViews = 158;
+const memoryLocations: Record<string, number> = {
+  India: 128,
+  "United States": 22,
+  Germany: 8,
+  Singapore: 6,
+  "United Kingdom": 4,
+};
+const memoryCities: Record<string, number> = {
+  "Pune, India": 92,
+  "Mumbai, India": 26,
+  "Bengaluru, India": 10,
+};
 
-function readLocalStats(): LocalStats {
-  try {
-    if (fs.existsSync(localViewsFilePath)) {
-      const data = fs.readFileSync(localViewsFilePath, "utf8");
-      return JSON.parse(data);
-    }
-  } catch {
-    // ignore
-  }
+function getFallbackStats() {
+  const topCountries = Object.entries(memoryLocations)
+    .map(([name, count]) => ({ name, count }))
+    .sort((a, b) => b.count - a.count)
+    .slice(0, 5);
+
+  const topCities = Object.entries(memoryCities)
+    .map(([name, count]) => ({ name, count }))
+    .sort((a, b) => b.count - a.count)
+    .slice(0, 5);
+
   return {
-    views: 156,
-    locations: { India: 120, "United States": 18, Germany: 8, Singapore: 6, "United Kingdom": 4 },
-    cities: { "Pune, India": 88, "Mumbai, India": 24, "Bengaluru, India": 8 },
-    recent: [
-      { city: "Pune", country: "India" },
-      { city: "San Francisco", country: "United States" },
-      { city: "Bengaluru", country: "India" },
-    ],
+    views: memoryViews,
+    topCountries,
+    topCities,
   };
 }
 
-function saveLocalStats(stats: LocalStats) {
-  try {
-    fs.writeFileSync(localViewsFilePath, JSON.stringify(stats, null, 2), "utf8");
-  } catch {
-    // ignore
-  }
-}
-
-// GET: Return current view stats
 export async function GET() {
-  const appScriptUrl = process.env.GOOGLE_APPSCRIPT_URL;
+  try {
+    const appScriptUrl = process.env.GOOGLE_APPSCRIPT_URL;
 
-  if (appScriptUrl) {
-    try {
-      const res = await fetch(appScriptUrl, {
-        method: "GET",
-        headers: { "Content-Type": "application/json" },
-        cache: "no-store",
-      });
-      if (res.ok) {
-        const data = await res.json();
-        if (data && data.stats) {
-          return NextResponse.json(data.stats);
+    if (appScriptUrl) {
+      try {
+        const res = await fetch(appScriptUrl, {
+          method: "GET",
+          headers: { "Content-Type": "application/json" },
+          cache: "no-store",
+        });
+
+        if (res.ok) {
+          const text = await res.text();
+          try {
+            const data = JSON.parse(text);
+            if (data && data.stats) {
+              return NextResponse.json(data.stats);
+            }
+          } catch {
+            // Not JSON (e.g. Apps Script deployment HTML error), fallback cleanly
+          }
         }
+      } catch (err) {
+        console.warn("Apps Script GET failed:", err);
       }
-    } catch (err) {
-      console.warn("Could not fetch stats from Google Apps Script, using local fallback:", err);
     }
+
+    return NextResponse.json(getFallbackStats());
+  } catch (error) {
+    console.error("GET /api/views error:", error);
+    return NextResponse.json(getFallbackStats());
   }
-
-  const local = readLocalStats();
-  const topCountries = Object.entries(local.locations)
-    .map(([name, count]) => ({ name, count }))
-    .sort((a, b) => b.count - a.count)
-    .slice(0, 5);
-  const topCities = Object.entries(local.cities)
-    .map(([name, count]) => ({ name, count }))
-    .sort((a, b) => b.count - a.count)
-    .slice(0, 5);
-
-  return NextResponse.json({
-    views: local.views,
-    topCountries,
-    topCities,
-    recentLocations: local.recent,
-  });
 }
 
-// POST: Record a new page hit (called on every page load/refresh)
 export async function POST(request: Request) {
-  const appScriptUrl = process.env.GOOGLE_APPSCRIPT_URL;
-  let body: ViewLocation = {};
-
   try {
-    body = await request.json();
-  } catch {
-    // Empty body or parse error
-  }
-
-  // Extract client IP and user-agent from headers (standard on Vercel / reverse proxies)
-  const userAgent = request.headers.get("user-agent") || "";
-  const clientIp =
-    request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
-    request.headers.get("x-real-ip") ||
-    "";
-
-  // Check Vercel automatic geo headers if available
-  const vercelCity = request.headers.get("x-vercel-ip-city");
-  const vercelCountry = request.headers.get("x-vercel-ip-country");
-  const vercelRegion = request.headers.get("x-vercel-ip-country-region");
-
-  const city = body.city || (vercelCity ? decodeURIComponent(vercelCity) : "Unknown");
-  const country = body.country || vercelCountry || "Unknown";
-  const region = body.region || vercelRegion || "";
-  const countryCode = body.countryCode || vercelCountry || "";
-
-  // 1. Forward to Google Apps Script if configured
-  if (appScriptUrl) {
+    let body: ViewLocation = {};
     try {
-      const res = await fetch(appScriptUrl, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          type: "view",
-          city,
-          region,
-          country,
-          countryCode,
-          ip: clientIp,
-          userAgent,
-        }),
-      });
-
-      if (res.ok) {
-        const scriptRes = await res.json();
-        if (scriptRes && scriptRes.stats) {
-          return NextResponse.json(scriptRes.stats);
-        }
-        if (scriptRes && scriptRes.views) {
-          return NextResponse.json({ views: scriptRes.views });
-        }
-      }
-    } catch (err) {
-      console.warn("Failed to forward view hit to Google Apps Script:", err);
+      body = await request.json();
+    } catch {
+      // Empty or invalid body
     }
+
+    const userAgent = request.headers.get("user-agent") || "";
+    const clientIp =
+      request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
+      request.headers.get("x-real-ip") ||
+      "";
+
+    const vercelCity = request.headers.get("x-vercel-ip-city");
+    const vercelCountry = request.headers.get("x-vercel-ip-country");
+    const vercelRegion = request.headers.get("x-vercel-ip-country-region");
+
+    const city = body.city || (vercelCity ? decodeURIComponent(vercelCity) : "Unknown");
+    const country = body.country || vercelCountry || "Unknown";
+    const region = body.region || vercelRegion || "";
+    const countryCode = body.countryCode || vercelCountry || "";
+
+    // Increment in-memory counter
+    memoryViews += 1;
+    if (country && country !== "Unknown") {
+      memoryLocations[country] = (memoryLocations[country] || 0) + 1;
+    }
+    if (city && city !== "Unknown") {
+      const cityKey = `${city}, ${country}`;
+      memoryCities[cityKey] = (memoryCities[cityKey] || 0) + 1;
+    }
+
+    let calculatedViews = memoryViews;
+    let customStats = null;
+
+    // Forward hit to Google Apps Script
+    const appScriptUrl = process.env.GOOGLE_APPSCRIPT_URL;
+    if (appScriptUrl) {
+      try {
+        const res = await fetch(appScriptUrl, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            type: "view",
+            city,
+            region,
+            country,
+            countryCode,
+            ip: clientIp,
+            userAgent,
+          }),
+        });
+
+        if (res.ok) {
+          const text = await res.text();
+          try {
+            const scriptRes = JSON.parse(text);
+            if (scriptRes && scriptRes.stats) {
+              customStats = scriptRes.stats;
+              calculatedViews = scriptRes.stats.views || calculatedViews;
+            } else if (scriptRes && scriptRes.row) {
+              // Row in sheet directly tracks total visits (e.g. baseline 150 + row count)
+              calculatedViews = 150 + Number(scriptRes.row);
+            } else if (scriptRes && scriptRes.views) {
+              calculatedViews = Number(scriptRes.views);
+            }
+          } catch {
+            // Apps script returned non-JSON, keep calculatedViews
+          }
+        }
+      } catch (err) {
+        console.warn("Apps Script POST failed:", err);
+      }
+    }
+
+    const fallback = getFallbackStats();
+    return NextResponse.json({
+      views: calculatedViews,
+      topCountries: customStats?.topCountries || fallback.topCountries,
+      topCities: customStats?.topCities || fallback.topCities,
+      currentLocation: { city, country, countryCode },
+    });
+  } catch (error) {
+    console.error("POST /api/views error:", error);
+    // Never fail with 500: always return safe fallback
+    const fallback = getFallbackStats();
+    return NextResponse.json({
+      views: fallback.views + 1,
+      topCountries: fallback.topCountries,
+      topCities: fallback.topCities,
+    });
   }
-
-  // 2. Local fallback increment
-  const local = readLocalStats();
-  local.views += 1;
-
-  if (country && country !== "Unknown") {
-    local.locations[country] = (local.locations[country] || 0) + 1;
-  }
-  if (city && city !== "Unknown") {
-    const cityKey = `${city}, ${country}`;
-    local.cities[cityKey] = (local.cities[cityKey] || 0) + 1;
-  }
-
-  if (city !== "Unknown" || country !== "Unknown") {
-    local.recent = [
-      { city, country },
-      ...local.recent.filter((r) => r.city !== city || r.country !== country),
-    ].slice(0, 5);
-  }
-
-  saveLocalStats(local);
-
-  const topCountries = Object.entries(local.locations)
-    .map(([name, count]) => ({ name, count }))
-    .sort((a, b) => b.count - a.count)
-    .slice(0, 5);
-  const topCities = Object.entries(local.cities)
-    .map(([name, count]) => ({ name, count }))
-    .sort((a, b) => b.count - a.count)
-    .slice(0, 5);
-
-  return NextResponse.json({
-    views: local.views,
-    topCountries,
-    topCities,
-    recentLocations: local.recent,
-    currentLocation: { city, country, countryCode },
-  });
 }
