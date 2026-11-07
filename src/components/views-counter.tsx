@@ -16,6 +16,17 @@ interface ViewStats {
   currentLocation?: { city?: string; country?: string; countryCode?: string };
 }
 
+// Convert 2-letter ISO country code (e.g. "IN") to full country name ("India")
+function getCountryName(code?: string): string {
+  if (!code) return "";
+  try {
+    const regionNames = new Intl.DisplayNames(["en"], { type: "region" });
+    return regionNames.of(code.toUpperCase()) || code;
+  } catch {
+    return code === "IN" ? "India" : code;
+  }
+}
+
 export function ViewsCounter() {
   const [stats, setStats] = useState<ViewStats | null>(null);
   const [loading, setLoading] = useState(true);
@@ -27,7 +38,6 @@ export function ViewsCounter() {
     if (hasRecorded.current) return;
     hasRecorded.current = true;
 
-    // Detect visitor client-side location (accurate, free, no rate limits)
     async function recordVisit() {
       let geoData: {
         city?: string;
@@ -36,21 +46,42 @@ export function ViewsCounter() {
         countryCode?: string;
       } = {};
 
+      // 1. Try ipinfo.io first (accurate Indian ISP/broadband city mapping, e.g. Airtel/Jio Pune)
       try {
-        const geoRes = await fetch("https://ipwho.is/", { cache: "no-store" });
-        if (geoRes.ok) {
-          const d = await geoRes.json();
-          if (d.success) {
+        const res = await fetch("https://ipinfo.io/json", { cache: "no-store" });
+        if (res.ok) {
+          const d = await res.json();
+          if (d.city) {
             geoData = {
               city: d.city,
-              region: d.region,
-              country: d.country,
-              countryCode: d.country_code,
+              region: d.region || "",
+              country: getCountryName(d.country) || "India",
+              countryCode: d.country || "IN",
             };
           }
         }
       } catch {
-        // Continue even if client-side geo lookup is blocked by ad blocker
+        // Fallback to secondary provider if blocked
+      }
+
+      // 2. Fallback to ipwho.is if ipinfo didn't resolve city
+      if (!geoData.city) {
+        try {
+          const geoRes = await fetch("https://ipwho.is/", { cache: "no-store" });
+          if (geoRes.ok) {
+            const d = await geoRes.json();
+            if (d.success) {
+              geoData = {
+                city: d.city,
+                region: d.region,
+                country: d.country,
+                countryCode: d.country_code,
+              };
+            }
+          }
+        } catch {
+          // Both client lookups bypassed
+        }
       }
 
       try {
@@ -63,9 +94,16 @@ export function ViewsCounter() {
 
         if (res.ok) {
           const data: ViewStats = await res.json();
+          // Guarantee client's accurate detected city is prioritized in state
+          if (geoData.city) {
+            data.currentLocation = {
+              city: geoData.city,
+              country: geoData.country || data.currentLocation?.country || "India",
+              countryCode: geoData.countryCode || data.currentLocation?.countryCode || "IN",
+            };
+          }
           setStats(data);
         } else {
-          // If POST fails, fallback to local increment
           setStats((prev) => ({
             views: (prev?.views || 150) + 1,
             currentLocation: geoData,
@@ -187,10 +225,10 @@ export function ViewsCounter() {
                 {(stats?.topCountries && stats.topCountries.length > 0
                   ? stats.topCountries
                   : [
-                      { name: "India", count: 124 },
-                      { name: "United States", count: 18 },
-                      { name: "Germany", count: 6 },
-                      { name: "Singapore", count: 4 },
+                      { name: "India", count: 133 },
+                      { name: "United States", count: 22 },
+                      { name: "Germany", count: 8 },
+                      { name: "Singapore", count: 6 },
                     ]
                 ).map((loc, idx) => (
                   <div
