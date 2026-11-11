@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { ThemeToggle } from "./theme-toggle";
 import { Menu, X, FileDown, Terminal } from "lucide-react";
 import { profileData } from "@/data/profile";
 import { ViewsCounter } from "./views-counter";
@@ -109,7 +108,7 @@ export function Navbar() {
             })}
           </div>
 
-          {/* Right Action Tools: Resume Button + Theme Toggle */}
+          {/* Right Action Tools: Resume Button */}
           <div className="hidden md:flex items-center gap-3">
             <a
               href={profileData.resumeUrl}
@@ -120,12 +119,10 @@ export function Navbar() {
               <FileDown className="w-3.5 h-3.5 text-zinc-400 dark:text-zinc-500" />
               <span>Resume</span>
             </a>
-            <ThemeToggle />
           </div>
 
           {/* Mobile hamburger menu button */}
           <div className="flex md:hidden items-center gap-2">
-            <ThemeToggle />
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="p-2 rounded-xl text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 border border-zinc-200 dark:border-zinc-800"

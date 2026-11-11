@@ -50,8 +50,8 @@ export function About() {
               Architecting Enterprise Reliability &amp; Autonomous Workflows
             </h3>
             <p className="text-zinc-600 dark:text-zinc-400 text-sm sm:text-base leading-relaxed">
-              At <strong className="text-zinc-900 dark:text-zinc-200">Xalta</strong>, I specialize in automating mission-critical enterprise workflows using Automation Anywhere 360 and UiPath.
-              My work spans Control Room orchestrations, API connectors, OCR &amp; IDP document understanding, and integrating generative AI into deterministic business processes.
+              At <strong className="text-zinc-900 dark:text-zinc-200">Xalta</strong>, I specialize in automating mission-critical enterprise workflows using Automation Anywhere 360, UiPath, and n8n.
+              My work spans Control Room orchestrations, Appsmith dashboards, REST APIs, and integrating agentic systems into deterministic business processes.
             </p>
             <p className="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed">
               I believe in strong computer science fundamentals: well-structured data models, clean OOP principles, high testability, and algorithmic efficiency.
@@ -63,6 +63,9 @@ export function About() {
             </span>
             <span className="px-2.5 py-1 rounded-md bg-zinc-200/50 dark:bg-zinc-800/80 text-zinc-700 dark:text-zinc-300">
               AA360 Control Room
+            </span>
+            <span className="px-2.5 py-1 rounded-md bg-zinc-200/50 dark:bg-zinc-800/80 text-zinc-700 dark:text-zinc-300">
+              n8n &amp; Appsmith
             </span>
             <span className="px-2.5 py-1 rounded-md bg-zinc-200/50 dark:bg-zinc-800/80 text-zinc-700 dark:text-zinc-300">
               Agentic Systems
@@ -131,7 +134,7 @@ export function About() {
           </div>
         </motion.div>
 
-        {/* Card 4: Current Exploration: AI Agents & LLMs */}
+        {/* Card 4: Current Exploration: Agentic Systems */}
         <motion.div
           whileHover={{ y: -3 }}
           transition={{ duration: 0.2 }}
@@ -140,27 +143,30 @@ export function About() {
           <div>
             <div className="flex items-center gap-2 text-zinc-500 dark:text-zinc-400 text-xs font-mono font-semibold">
               <BrainCircuit className="w-4 h-4" />
-              <span>CURRENT OBSESSION</span>
+              <span>CURRENTLY WORKING &amp; EXPLORING</span>
             </div>
             <h4 className="mt-2 text-lg sm:text-xl font-bold text-zinc-900 dark:text-zinc-100">
-              Autonomous AI Agents &amp; Multi-Agent Systems
+              Agentic Systems &amp; Autonomous Workflows
             </h4>
             <p className="mt-2 text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
-              Actively exploring autonomous agent architectures, Model Context Protocol (MCP), tool-use pipelines, and embedding semantic search into business workflows using Gemini API and local LLM runtimes.
+              Actively designing and building autonomous agentic systems, multi-agent collaboration frameworks, Model Context Protocol (MCP), and tool-calling execution loops that integrate seamlessly into real-world business pipelines.
             </p>
           </div>
           <div className="mt-4 flex flex-wrap gap-2 text-xs font-mono text-zinc-600 dark:text-zinc-400">
             <span className="px-2.5 py-1 rounded-md bg-zinc-500/10 text-zinc-600 dark:text-zinc-400">
-              Gemini API
+              Agentic Systems
             </span>
             <span className="px-2.5 py-1 rounded-md bg-zinc-200/50 dark:bg-zinc-800/80">
               Multi-Agent Orchestration
             </span>
             <span className="px-2.5 py-1 rounded-md bg-zinc-200/50 dark:bg-zinc-800/80">
+              Tool Calling &amp; MCP
+            </span>
+            <span className="px-2.5 py-1 rounded-md bg-zinc-200/50 dark:bg-zinc-800/80">
               n8n &amp; Webhooks
             </span>
             <span className="px-2.5 py-1 rounded-md bg-zinc-200/50 dark:bg-zinc-800/80">
-              IDP &amp; OCR
+              REST APIs
             </span>
           </div>
         </motion.div>

@@ -22,10 +22,7 @@ export const skillsData: SkillCategory[] = [
     skills: [
       "AI Agents",
       "LLM APIs",
-      "Gemini API",
-      "Prompt Engineering",
-      "OCR",
-      "Intelligent Document Processing (IDP)"
+      "Prompt Engineering"
     ]
   },
   {
@@ -45,13 +42,7 @@ export const skillsData: SkillCategory[] = [
     title: "Programming Languages",
     iconName: "Code2",
     description: "Core algorithmic coding, backend scripting, and rapid system development.",
-    skills: ["C++", "Python", "Java", "JavaScript", "TypeScript", "PHP", "SQL"]
-  },
-  {
-    title: "Frontend Engineering",
-    iconName: "Layout",
-    description: "Fluid, responsive, modern web interfaces and state-driven single-page apps.",
-    skills: ["React", "Next.js", "Redux", "Angular", "Material UI", "Bootstrap", "Tailwind CSS"]
+    skills: ["C++", "Python", "Java", "JavaScript", "SQL"]
   },
   {
     title: "Backend & Systems",
@@ -63,13 +54,13 @@ export const skillsData: SkillCategory[] = [
     title: "Databases & Storage",
     iconName: "Database",
     description: "Relational modeling, document stores, and query optimization.",
-    skills: ["MySQL", "MongoDB", "Database Indexing", "Aggregation Pipelines"]
+    skills: ["MySQL", "MongoDB", "Aggregation Pipelines"]
   },
   {
     title: "DevOps & Cloud Tools",
     iconName: "Terminal",
-    description: "Containerization, developer tooling, version control, and Linux systems.",
-    skills: ["Git", "GitHub", "Postman", "Docker", "Kubernetes", "Linux", "Google Cloud (GCP)"]
+    description: "Containerization, developer tooling, version control, and cloud systems.",
+    skills: ["Git", "GitHub", "Postman", "Docker", "Google Cloud (GCP)"]
   },
   {
     title: "Core Computer Science",
@@ -84,4 +75,3 @@ export const skillsData: SkillCategory[] = [
     ]
   }
 ];
-
